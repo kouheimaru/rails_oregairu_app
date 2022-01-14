@@ -1,0 +1,54 @@
+
+  <div class="container">
+  <div class= "column is-3">
+  <h2>セリフを投稿してみる</h2>
+  <div class="level">
+  <div class="level-item">
+  <%= form_for @post do |f| %>
+  <div class="field has-addons">
+    <%= f.text_field :content, class: "input is-primary is-nomal" %>
+    <%= f.submit "投稿する", class: "button is-primary" %>
+  <% end %>
+  </div>
+  </div>
+  </div>
+  </div>
+  <hr>
+  <section class = "section">
+  
+  <h2 class="subtitle"><i class="fas fa-chess-king"></i> 現在ランキング1位</h2>
+  
+  <br>
+  <h2 class="title">
+  <%= @rank_f.content %>
+  </h2>
+  <h3 class= "subtitle"">ユーザー名:<%= @rank_f.user.username %></h3>
+  <div class="field has-addons">
+  <span class="bulma-fa-mixin">
+  <div class="fas fa-thumbs-up"></div>
+  <strong><%= @max_count %></strong>
+  </span>
+  </div>
+  </section>
+  <hr>
+  <section>
+  <h1 class="title">投稿一覧</h1>
+
+  <% @posts.each do |post| %>
+    <div class= "column is-6">
+    <div class = "card">
+    <div class= "card-content">
+    <p>ユーザ名：<a href="/users/<%= post.user.id %>"><%= post.user.username %></a></p>
+    <a href="/posts/<%= post.id %>"><%= post.content %></a>
+    <span class="bulma-fa-mixin">
+    <div class="fas fa-thumbs-up"></div>
+    <strong><%= post.liked_users.count %></strong>
+    </span>
+    </div>
+    </div>
+    </div>
+  <% end %>
+
+  </section>
+  
+</div>
