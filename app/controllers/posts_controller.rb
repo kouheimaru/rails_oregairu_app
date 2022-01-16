@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:show, :create]
   def index
-    @posts = Post.all
+    @posts = Post.all.page(params[:page]).per(5)
     @post = Post.new
     @post_f = Post.all
     max = 0
@@ -30,21 +30,7 @@ class PostsController < ApplicationController
       redirect_back(fallback_location: root_path)
     end
   end
-
-  # def rank
-  #   @post_f = Post.all
-  #   max = 0
-  #   @max_count = 0
-  #   ans = nil
-  #   @post_f.each do |v|
-  #     if max < v.likes.count then
-  #       ans = v 
-  #       @max_count = v.likes.count
-  #     end
-  #   end
-  #   @rank_f = ans 
-  # end
-
+  
   private
   def post_params
     params.require(:post).permit(:content)

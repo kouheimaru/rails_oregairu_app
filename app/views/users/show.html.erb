@@ -1,9 +1,22 @@
-<h1>ユーザー詳細ページ</h1>
-<h3><%= @user.username %></h3>
-<h2>投稿内容</h2>
+<section class="sectino">
+<div class="colums is-centered">
+<div class="container">
+<div class="colums is-5">
+<h1 class="title">利用者詳細ページ</h1>
+<h3 class="subtitle">名前：<%= @user.username %></h3>
+  <hr>
+<% if @user.posts.empty? %>
+  <h3>投稿はありません</h3>
+<% else %>
 <% @user.posts.each do |post| %>
-  <a href="/posts/<%= post.id %>"><%= post.content %></a>
+  <a href="/posts/<%= post.id %>"><strong><%= post.content %></strong></a>
   <hr>
 <% end %>
-<%= link_to "ユーザー一覧へ", users_path %>
+<% end %>
+</div>
+
+</div>
+</div>
+</section>
+<%= link_to "利用者一覧へ", users_path %>
 <%= link_to "ホームへ戻る", posts_path %>

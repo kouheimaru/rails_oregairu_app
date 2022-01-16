@@ -1,24 +1,28 @@
 <div class="container">
-<h1 class="title">投稿詳細ページ</h1>
-<h3>ユーザー名:<%= @post.user.username %></h3><br>
-<h3 class="subtitle"><%= @post.content %></h3>
-<h3>いいね件数: <%= @post.likes.count %></h3>
- <div class="field has-addons">
-  <span class="bulma-fa-mixin">
-  <div class="fas fa-thumbs-up"></div>
-  <strong><%= @post.likes.count %></strong>
-  </span>
-  </div>
-<% if current_user.already_liked?(@post) %>
-  <%= link_to 'いいねを取り消す', post_like_path(@post), method: :delete ,class: "button is-link"%>
-<% else %>
-  <%= link_to 'いいね', post_likes_path(@post), method: :post ,class: "button is-success"%>
-<% end %>
-<hr>
-<h2>いいねしたユーザー</h2>
-<% @post.liked_users.each do |user| %>
-  <li><%= user.username %></li>
-<% end %>
+  <div class="colums is-centered">
+    <div class="column is-5">
+    <h1 class="title">投稿詳細ページ</h1>
+    <h3>ユーザー名:<a href="/users/<%= @post.user.id %>"><%= @post.user.username %></a></h3><br>
+    <h3 class="subtitle"><%= @post.content %></h3>
+    <h3>いいね件数: <%= @post.likes.count %></h3>
+    <div class="field has-addons">
+      <span class="bulma-fa-mixin">
+      <div class="fas fa-thumbs-up"></div>
+      <strong><%= @post.likes.count %></strong>
+      </span>
+      </div>
+    <% if current_user.already_liked?(@post) %>
+      <%= link_to 'いいねを取り消す', post_like_path(@post), method: :delete ,class: "button is-link"%>
+    <% else %>
+      <%= link_to 'いいね', post_likes_path(@post), method: :post ,class: "button is-success"%>
+    <% end %>
+    <hr>
+    <h2>いいねしたユーザー</h2>
+    <% @post.liked_users.each do |user| %>
+      <li><%= user.username %></li>
+    <% end %>
 
-<%= link_to "ホームへ戻る", posts_path %>
+    <%= link_to "ホームへ戻る", posts_path %>
+  </div>
+  </div>
 </div>

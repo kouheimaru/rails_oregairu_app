@@ -6,16 +6,17 @@
     <%= csp_meta_tag %>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha256-UzFD2WYH2U1dQpKDjjZK72VtPeWP50NoJjd26rnAdUI=" crossorigin="anonymous" />
-
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
 
   <body>
-    <nav class="navbar is-success">
+    <nav class="navbar is-danger">
       <div class="navbar-brand">
         <%= link_to root_path, class: "navbar-item" do %>
-          <h1 class="title is-4" style="font-family: cursive;">俺ガイル名セリフ投票</h1>
+          <h1 class="title is-4" style="font-family: cursive;">「呪術廻戦」名セリフ投票</h1>
         <% end %>
         <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
           <span></span>
@@ -30,20 +31,20 @@
              <%= link_to "投稿一覧", root_path %>
           </div>
           <div class="navbar-item">
-             <%= link_to "投稿者一覧へ", users_path %>
+             <%= link_to "利用者一覧へ", users_path %>
           </div>
 
           <div class="navbar-end">
             <div class="navbar-item">
               <div class="field is-grouped">
                 <p class="control">
-                  <%= link_to "マイページ", user_path(current_user.id), class: " button is-success is-light" %>
+                  <%= link_to "マイページ", user_path(current_user.id), class: " button is-danger is-light" %>
                 </p>
                 <p class="control">
-                   <%= link_to "アカウント設定", edit_user_registration_path(current_user.id), class: "button is-success is-light" %>
+                   <%= link_to "アカウント設定", edit_user_registration_path(current_user.id), class: "button is-danger is-light" %>
                 </p>
                 <p class="control">
-                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "button is-success is-light" %>
+                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "button is-danger is-light" %>
                 </p>
               </div>
             </div>
@@ -52,16 +53,16 @@
       <% else %>
         <div id="navbarExampleTransparentExample" class="navbar-menu">
           <div class="navbar-item">
-            <%= link_to "投稿一覧", posts_path, class: "navbar-item button is-success is-light" %>
+            <%= link_to "投稿一覧", posts_path, class: "navbar-item button is-danger is-light" %>
           </div>
           <div class="navbar-end">
             <div class="navbar-item">
               <div class="field is-grouped">
                 <p class="control">
-                  <%= link_to "ログイン", new_user_session_path, class: "button is-success is-light" %>
+                  <%= link_to "ログイン", new_user_session_path, class: "button is-danger is-light" %>
                 </p>
                 <p class="control">
-                  <%= link_to "新規登録", new_user_registration_path, class: "button is-success is-light" %>
+                  <%= link_to "新規登録", new_user_registration_path, class: "button is-danger is-light" %>
                 </p>
               </div>
             </div>
